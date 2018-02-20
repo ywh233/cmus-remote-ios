@@ -6,5 +6,5 @@ target 'CmusRemote' do
   use_frameworks!
 
   # Pods for CmusRemote
-  pod 'MaterialComponents', '~> 23.4.1'
+  pod 'MaterialComponents', '~> 45.0.0'
 end

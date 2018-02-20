@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignInViewController.swift
 //  CmusRemote
 //
 //  Created by Yuwei Huang on 2/19/18.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MaterialComponents.
 
-class ViewController: UIViewController {
+class SignInViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()

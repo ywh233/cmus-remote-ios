@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		407807F73433E8AC9637EC26 /* Pods_CmusRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */; };
 		E84D117B203BB6BA00E3C5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */; };
-		E84D117D203BB6BA00E3C5E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117C203BB6BA00E3C5E7 /* ViewController.swift */; };
+		E84D117D203BB6BA00E3C5E7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117C203BB6BA00E3C5E7 /* SignInViewController.swift */; };
 		E84D1180203BB6BA00E3C5E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84D117E203BB6BA00E3C5E7 /* Main.storyboard */; };
 		E84D1182203BB6BA00E3C5E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E84D1181203BB6BA00E3C5E7 /* Assets.xcassets */; };
 		E84D1185203BB6BA00E3C5E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84D1183203BB6BA00E3C5E7 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		D1C43021849E95AD713188D8 /* Pods-CmusRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CmusRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote.release.xcconfig"; sourceTree = "<group>"; };
 		E84D1177203BB6BA00E3C5E7 /* CmusRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CmusRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E84D117C203BB6BA00E3C5E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E84D117C203BB6BA00E3C5E7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E84D117F203BB6BA00E3C5E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E84D1181203BB6BA00E3C5E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E84D1184203BB6BA00E3C5E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */,
-				E84D117C203BB6BA00E3C5E7 /* ViewController.swift */,
+				E84D117C203BB6BA00E3C5E7 /* SignInViewController.swift */,
 				E84D117E203BB6BA00E3C5E7 /* Main.storyboard */,
 				E84D1181203BB6BA00E3C5E7 /* Assets.xcassets */,
 				E84D1183203BB6BA00E3C5E7 /* LaunchScreen.storyboard */,
@@ -199,13 +199,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -219,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E84D117D203BB6BA00E3C5E7 /* ViewController.swift in Sources */,
+				E84D117D203BB6BA00E3C5E7 /* SignInViewController.swift in Sources */,
 				E84D117B203BB6BA00E3C5E7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
