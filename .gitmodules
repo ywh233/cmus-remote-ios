@@ -1,0 +1,3 @@
+[submodule "deps/cmus-client-cpp"]
+	path = deps/cmus-client-cpp
+	url = https://github.com/equinox1993/cmus-client-cpp.git

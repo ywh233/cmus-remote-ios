@@ -7,4 +7,5 @@ target 'CmusRemote' do
 
   # Pods for CmusRemote
   pod 'MaterialComponents', '~> 45.0.0'
+  pod "PromiseKit/CorePromise", "~> 6.1.0"
 end

@@ -1,3 +1,5 @@
 Pods/
 CmusRemote.xcworkspace/
 Podfile.lock
+build/
+.idea
