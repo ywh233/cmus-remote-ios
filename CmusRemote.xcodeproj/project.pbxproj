@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		407807F73433E8AC9637EC26 /* Pods_CmusRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */; };
 		E84D117B203BB6BA00E3C5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */; };
 		E84D117D203BB6BA00E3C5E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117C203BB6BA00E3C5E7 /* ViewController.swift */; };
 		E84D1180203BB6BA00E3C5E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84D117E203BB6BA00E3C5E7 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0F045345486BB6A312A432 /* Pods-CmusRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CmusRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CmusRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1C43021849E95AD713188D8 /* Pods-CmusRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CmusRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote.release.xcconfig"; sourceTree = "<group>"; };
 		E84D1177203BB6BA00E3C5E7 /* CmusRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CmusRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E84D117C203BB6BA00E3C5E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				407807F73433E8AC9637EC26 /* Pods_CmusRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18C11B8F0CC6C315C24B3E31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99F2DD4A311131C8D9220ABA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A0F045345486BB6A312A432 /* Pods-CmusRemote.debug.xcconfig */,
+				D1C43021849E95AD713188D8 /* Pods-CmusRemote.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E84D116E203BB6BA00E3C5E7 = {
 			isa = PBXGroup;
 			children = (
 				E84D1179203BB6BA00E3C5E7 /* CmusRemote */,
 				E84D1178203BB6BA00E3C5E7 /* Products */,
+				99F2DD4A311131C8D9220ABA /* Pods */,
+				18C11B8F0CC6C315C24B3E31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E84D1189203BB6BA00E3C5E7 /* Build configuration list for PBXNativeTarget "CmusRemote" */;
 			buildPhases = (
+				E197F822E9AFAFF90C6D2A53 /* [CP] Check Pods Manifest.lock */,
 				E84D1173203BB6BA00E3C5E7 /* Sources */,
 				E84D1174203BB6BA00E3C5E7 /* Frameworks */,
 				E84D1175203BB6BA00E3C5E7 /* Resources */,
+				E79D7166004C0150EF8926DD /* [CP] Embed Pods Frameworks */,
+				AB62CCA1BD15DCB9299F3C2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB62CCA1BD15DCB9299F3C2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E197F822E9AFAFF90C6D2A53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CmusRemote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E79D7166004C0150EF8926DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E84D1173203BB6BA00E3C5E7 /* Sources */ = {
@@ -272,6 +355,7 @@
 		};
 		E84D118A203BB6BA00E3C5E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A0F045345486BB6A312A432 /* Pods-CmusRemote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +370,7 @@
 		};
 		E84D118B203BB6BA00E3C5E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1C43021849E95AD713188D8 /* Pods-CmusRemote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
