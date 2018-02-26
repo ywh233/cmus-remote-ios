@@ -22,18 +22,18 @@ typedef NS_ENUM(NSInteger, CmusViewType) {
 };
 
 @interface CmusTags : NSObject
-@property (nonatomic, readonly) NSString* album;
-@property (nonatomic, readonly) NSString* artist;
-@property (nonatomic, readonly) NSString* title;
+@property (nonatomic, readonly) NSString* _Nonnull album;
+@property (nonatomic, readonly) NSString* _Nonnull artist;
+@property (nonatomic, readonly) NSString* _Nonnull title;
 @end
 
 @interface CmusBasicMetadata: NSObject
-@property (nonatomic, readonly) NSString* filename;
+@property (nonatomic, readonly)  NSString* _Nonnull filename;
 @property (nonatomic, readonly) NSInteger duration;
-@property (nonatomic, readonly) CmusTags* tags;
+@property (nonatomic, readonly)  CmusTags* _Nonnull tags;
 
-@property (nonatomic, readonly) NSString* titleOrBasename;
-@property (nonatomic, readonly) NSString* artistOrUnknown;
+@property (nonatomic, readonly)  NSString* _Nonnull titleOrBasename;
+@property (nonatomic, readonly)  NSString* _Nonnull artistOrUnknown;
 @end
 
 @interface CmusStatus : CmusBasicMetadata

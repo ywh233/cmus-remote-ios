@@ -7,6 +7,7 @@
 //
 
 import MaterialComponents.MDCTabBar
+import PromiseKit.PMKUIKit
 import UIKit
 
 class RemoteViewController: UIViewController, MDCTabBarDelegate {
@@ -14,7 +15,8 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
   private var _errorHandlerBinding: EventBindingHolder!
   private var _scrollingContentVC: ScrollingContentViewController!
 
-  private var _miniPlayer: MiniPlayerViewController?
+  private var _tabBarShadowView: UIView!
+  private var _miniPlayer: MiniPlayerViewController!
 
   private var _hidePlayerConstraint: NSLayoutConstraint?
 
@@ -72,43 +74,43 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
       tabBar.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
 
       tabBar.bottomAnchor.constraint(equalTo: scrollView.topAnchor),
-      ])
+    ])
 
     // Tab bar doesn't cover the status bar.
-    let tabBarShadowView = UIView()
-    tabBarShadowView.backgroundColor = Theme.controlBackgroundColor
-    tabBarShadowView.translatesAutoresizingMaskIntoConstraints = false
-    Theme.addFlatShadow(toLayer: tabBarShadowView.layer)
-    view.insertSubview(tabBarShadowView, belowSubview: tabBar)
+    _tabBarShadowView = UIView()
+    _tabBarShadowView.backgroundColor = Theme.controlBackgroundColor
+    _tabBarShadowView.translatesAutoresizingMaskIntoConstraints = false
+    Theme.addFlatShadow(toLayer: _tabBarShadowView.layer)
+    view.insertSubview(_tabBarShadowView, belowSubview: tabBar)
     NSLayoutConstraint.activate([
-      tabBarShadowView.topAnchor.constraint(equalTo: view.topAnchor),
-      tabBarShadowView.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor),
-      tabBarShadowView.trailingAnchor.constraint(
+      _tabBarShadowView.topAnchor.constraint(equalTo: view.topAnchor),
+      _tabBarShadowView.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor),
+      _tabBarShadowView.trailingAnchor.constraint(
           equalTo: tabBar.trailingAnchor),
-      tabBarShadowView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor),
+      _tabBarShadowView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor),
       ])
 
     _miniPlayer = MiniPlayerViewController()
-    _miniPlayer?.delegate = _scrollingContentVC
-    addChildViewController(_miniPlayer!)
-    self.view.addSubview(_miniPlayer!.view)
+    _miniPlayer.delegate = _scrollingContentVC
+    addChildViewController(_miniPlayer)
+    self.view.addSubview(_miniPlayer.view)
     NSLayoutConstraint.activate([
-      _miniPlayer!.view.leadingAnchor.constraint(
+      _miniPlayer.view.leadingAnchor.constraint(
         equalTo: view.leadingAnchor),
-      _miniPlayer!.view.trailingAnchor.constraint(
+      _miniPlayer.view.trailingAnchor.constraint(
         equalTo: view.trailingAnchor),
 
-      _miniPlayer!.view.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      _miniPlayer.view.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
     ])
     let playerBottomConstraint =
-        _miniPlayer!.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        _miniPlayer.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
     playerBottomConstraint.priority = .defaultLow
     playerBottomConstraint.isActive = true
-    _miniPlayer!.didMove(toParentViewController: self)
-    _miniPlayer!.registerSession(_session)
+    _miniPlayer.didMove(toParentViewController: self)
+    _miniPlayer.registerSession(_session)
 
-    setMiniPlayerVisible(_scrollingContentVC.showsMiniPlayer, animated: false)
+    updateViewState(animated: false)
   }
 
   override func didReceiveMemoryWarning() {
@@ -119,33 +121,48 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
   // MARK: - MDCTabBarDelegate
   func tabBar(_ tabBar: MDCTabBar, didSelect item: UITabBarItem) {
     _scrollingContentVC.currentContentIndex = item.tag
-    setMiniPlayerVisible(_scrollingContentVC.showsMiniPlayer, animated: true)
+    updateViewState(animated: true)
   }
 
   // MARK: - Private
 
+  private func updateViewState(animated: Bool) {
+    setTabBarShadowVisible(!_scrollingContentVC.hasExtraHeader,
+                           animated: animated)
+    setMiniPlayerVisible(_scrollingContentVC.showsMiniPlayer,
+                         animated: animated)
+  }
+
+  private func setTabBarShadowVisible(_ visible: Bool, animated: Bool) {
+    _tabBarShadowView.isHidden = !visible
+
+    if animated {
+      UIView.animate(withDuration: Theme.shortAnimationDurationSec,
+                     animations: view.layoutIfNeeded)
+    } else {
+      view.layoutIfNeeded()
+    }
+  }
+
   private func setMiniPlayerVisible(_ visible: Bool, animated: Bool) {
-    _miniPlayer?.view.isHidden = false
+    _miniPlayer.view.isHidden = false
 
     if visible {
       _hidePlayerConstraint?.isActive = false
       _hidePlayerConstraint = nil
     } else if _hidePlayerConstraint == nil {
       _hidePlayerConstraint =
-          _miniPlayer?.view.topAnchor.constraint(equalTo: view.bottomAnchor)
+          _miniPlayer.view.topAnchor.constraint(equalTo: view.bottomAnchor)
       _hidePlayerConstraint?.isActive = true
     }
 
-    if animated {
-      UIView.animate(withDuration: Theme.miniPlayerAnimationIntervalSec,
-                     animations: {
-        self.view.layoutIfNeeded()
-      }, completion: { _ in
-        self._miniPlayer?.view.isHidden = !visible
-      })
-    } else {
-      view.layoutIfNeeded()
-      _miniPlayer?.view.isHidden = !visible
+    let promise = animated ?
+        UIView.animate(.promise, duration: Theme.shortAnimationDurationSec,
+                       animations: view.layoutIfNeeded).asVoid()
+        : Promise().done(view.layoutIfNeeded)
+
+    _ = promise.done {
+      self._miniPlayer.view.isHidden = !visible
     }
   }
 }

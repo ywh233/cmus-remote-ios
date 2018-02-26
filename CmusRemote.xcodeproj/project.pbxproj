@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		407807F73433E8AC9637EC26 /* Pods_CmusRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */; };
+		E81205162043ECC7003C1550 /* NavigationBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81205152043ECC7003C1550 /* NavigationBarContainerViewController.swift */; };
+		E81205182043F0B7003C1550 /* ListViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81205172043F0B7003C1550 /* ListViewTab.swift */; };
+		E8294BFA2046AA8E006A1008 /* StringUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8294BF92046AA8E006A1008 /* StringUtils.mm */; };
 		E84D117B203BB6BA00E3C5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */; };
 		E84D117D203BB6BA00E3C5E7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D117C203BB6BA00E3C5E7 /* SignInViewController.swift */; };
 		E84D1180203BB6BA00E3C5E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84D117E203BB6BA00E3C5E7 /* Main.storyboard */; };
@@ -20,10 +23,11 @@
 		E89A5B07203D5CD10032D09A /* CmusRemoteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A5B06203D5CD10032D09A /* CmusRemoteSession.swift */; };
 		E89CC8032042114F004C42B9 /* SessionErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CC8022042114F004C42B9 /* SessionErrorHandler.swift */; };
 		E89CC80A20423D7C004C42B9 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CC80920423D7C004C42B9 /* ScrollingContentViewController.swift */; };
-		E8A9F4742043467300CA3EDC /* FilesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9F4732043467300CA3EDC /* FilesCollectionViewController.swift */; };
+		E8A9F4742043467300CA3EDC /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9F4732043467300CA3EDC /* LibraryCollectionViewController.swift */; };
 		E8A9F47620434C2300CA3EDC /* SessionRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9F47520434C2300CA3EDC /* SessionRegistrar.swift */; };
 		E8A9F4782043541900CA3EDC /* RemoteViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9F4772043541900CA3EDC /* RemoteViewTab.swift */; };
 		E8AC7C46203FF39500A3E34A /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC7C45203FF39500A3E34A /* MiniPlayerViewController.swift */; };
+		E8B5316520453F1B00A9D592 /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5316420453F1B00A9D592 /* SearchHeaderView.swift */; };
 		E8F87DA7203E92100076C243 /* CmusTypes.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8F87DA6203E92100076C243 /* CmusTypes.mm */; };
 		E8F87DAA203EBC5F0076C243 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F87DA9203EBC5F0076C243 /* Persistence.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +36,10 @@
 		1A0F045345486BB6A312A432 /* Pods-CmusRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CmusRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		1C81AD99B7C02D4071B68069 /* Pods_CmusRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CmusRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C43021849E95AD713188D8 /* Pods-CmusRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CmusRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-CmusRemote/Pods-CmusRemote.release.xcconfig"; sourceTree = "<group>"; };
+		E81205152043ECC7003C1550 /* NavigationBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarContainerViewController.swift; sourceTree = "<group>"; };
+		E81205172043F0B7003C1550 /* ListViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTab.swift; sourceTree = "<group>"; };
+		E8294BF82046A7BC006A1008 /* StringUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringUtils.h; sourceTree = "<group>"; };
+		E8294BF92046AA8E006A1008 /* StringUtils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = StringUtils.mm; sourceTree = "<group>"; };
 		E84D1177203BB6BA00E3C5E7 /* CmusRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CmusRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84D117A203BB6BA00E3C5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E84D117C203BB6BA00E3C5E7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -50,10 +58,11 @@
 		E89A5B06203D5CD10032D09A /* CmusRemoteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmusRemoteSession.swift; sourceTree = "<group>"; };
 		E89CC8022042114F004C42B9 /* SessionErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionErrorHandler.swift; sourceTree = "<group>"; };
 		E89CC80920423D7C004C42B9 /* ScrollingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingContentViewController.swift; sourceTree = "<group>"; };
-		E8A9F4732043467300CA3EDC /* FilesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCollectionViewController.swift; sourceTree = "<group>"; };
+		E8A9F4732043467300CA3EDC /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		E8A9F47520434C2300CA3EDC /* SessionRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRegistrar.swift; sourceTree = "<group>"; };
 		E8A9F4772043541900CA3EDC /* RemoteViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewTab.swift; sourceTree = "<group>"; };
 		E8AC7C45203FF39500A3E34A /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		E8B5316420453F1B00A9D592 /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		E8F87DA5203E92100076C243 /* CmusTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CmusTypes.h; sourceTree = "<group>"; };
 		E8F87DA6203E92100076C243 /* CmusTypes.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CmusTypes.mm; sourceTree = "<group>"; };
 		E8F87DA8203E97330076C243 /* CmusTypes+ObjCpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CmusTypes+ObjCpp.h"; sourceTree = "<group>"; };
@@ -135,6 +144,8 @@
 				E8F87DA5203E92100076C243 /* CmusTypes.h */,
 				E8F87DA6203E92100076C243 /* CmusTypes.mm */,
 				E8F87DA8203E97330076C243 /* CmusTypes+ObjCpp.h */,
+				E8294BF82046A7BC006A1008 /* StringUtils.h */,
+				E8294BF92046AA8E006A1008 /* StringUtils.mm */,
 			);
 			path = Facade;
 			sourceTree = "<group>";
@@ -154,7 +165,7 @@
 		E89CC80520422B74004C42B9 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				E8A9F47020433E2900CA3EDC /* FileList */,
+				E8A9F47020433E2900CA3EDC /* List */,
 				E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */,
 				E8AC7C45203FF39500A3E34A /* MiniPlayerViewController.swift */,
 				E89CC80920423D7C004C42B9 /* ScrollingContentViewController.swift */,
@@ -171,12 +182,15 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		E8A9F47020433E2900CA3EDC /* FileList */ = {
+		E8A9F47020433E2900CA3EDC /* List */ = {
 			isa = PBXGroup;
 			children = (
-				E8A9F4732043467300CA3EDC /* FilesCollectionViewController.swift */,
+				E8A9F4732043467300CA3EDC /* LibraryCollectionViewController.swift */,
+				E81205152043ECC7003C1550 /* NavigationBarContainerViewController.swift */,
+				E81205172043F0B7003C1550 /* ListViewTab.swift */,
+				E8B5316420453F1B00A9D592 /* SearchHeaderView.swift */,
 			);
-			path = FileList;
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,13 +335,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8A9F4742043467300CA3EDC /* FilesCollectionViewController.swift in Sources */,
+				E8294BFA2046AA8E006A1008 /* StringUtils.mm in Sources */,
+				E8A9F4742043467300CA3EDC /* LibraryCollectionViewController.swift in Sources */,
 				E84D118D203BBF2200E3C5E7 /* Theme.swift in Sources */,
 				E8F87DAA203EBC5F0076C243 /* Persistence.swift in Sources */,
 				E8AC7C46203FF39500A3E34A /* MiniPlayerViewController.swift in Sources */,
+				E81205162043ECC7003C1550 /* NavigationBarContainerViewController.swift in Sources */,
 				E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */,
 				E89A5B07203D5CD10032D09A /* CmusRemoteSession.swift in Sources */,
 				E860E66220414413008DEB47 /* EventTarget.swift in Sources */,
+				E81205182043F0B7003C1550 /* ListViewTab.swift in Sources */,
 				E84D117D203BB6BA00E3C5E7 /* SignInViewController.swift in Sources */,
 				E8F87DA7203E92100076C243 /* CmusTypes.mm in Sources */,
 				E8A9F47620434C2300CA3EDC /* SessionRegistrar.swift in Sources */,
@@ -336,6 +353,7 @@
 				E8A9F4782043541900CA3EDC /* RemoteViewTab.swift in Sources */,
 				E84D117B203BB6BA00E3C5E7 /* AppDelegate.swift in Sources */,
 				E89CC8032042114F004C42B9 /* SessionErrorHandler.swift in Sources */,
+				E8B5316520453F1B00A9D592 /* SearchHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

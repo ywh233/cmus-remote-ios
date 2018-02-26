@@ -127,14 +127,6 @@ class SignInViewController: UIViewController {
     widthConstraint.priority = .defaultHigh
     widthConstraint.isActive = true
 
-    // Register events.
-    NotificationCenter.default.addObserver(
-        self, selector: #selector(onKeyboardWillShow(notification:)),
-        name: .UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.addObserver(
-      self, selector: #selector(onKeyboardWillHide(notification:)),
-      name: .UIKeyboardWillHide, object: nil)
-
     // Recognizer
     let swipeDownRecognizer = UISwipeGestureRecognizer(
       target: self, action: #selector(onSwipeDown(gesture:)))
@@ -147,6 +139,24 @@ class SignInViewController: UIViewController {
     _hostNameInput.text = Persistence.hostName
     _portInput.text = Persistence.port
     _passwordInput.text = Persistence.password
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    // Register events.
+    NotificationCenter.default.addObserver(
+      self, selector: #selector(onKeyboardWillShow(notification:)),
+      name: .UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(
+      self, selector: #selector(onKeyboardWillHide(notification:)),
+      name: .UIKeyboardWillHide, object: nil)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    NotificationCenter.default.removeObserver(self)
   }
 
   override func didReceiveMemoryWarning() {

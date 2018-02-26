@@ -14,12 +14,16 @@ class Theme {
   static let controlMainColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
   static let controlSecondaryColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 
-  static let miniPlayerAnimationIntervalSec = 0.2
+  static let shortAnimationDurationSec = 0.2
+
+  static let flatShadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+  static let flatShadowRadius: CGFloat = 16
+  static let flatShadowOpacity: Float = 0.08
 
   static func addFlatShadow(toLayer layer: CALayer) {
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowRadius = 16
+    layer.shadowColor = flatShadowColor
+    layer.shadowRadius = flatShadowRadius
     layer.shadowOffset = CGSize(width: 0, height: 0)
-    layer.shadowOpacity = 0.05
+    layer.shadowOpacity = flatShadowOpacity
   }
 }

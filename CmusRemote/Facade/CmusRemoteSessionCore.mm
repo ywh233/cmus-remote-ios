@@ -17,6 +17,7 @@
 #include "../../deps/cmus-client-cpp/lib/cmus_client.h"
 
 #import "CmusTypes+ObjCpp.h"
+#import "StringUtils.h"
 
 static void ConvertError(const std::runtime_error& err, NSError** out_err) {
   if (!out_err) {
@@ -50,9 +51,10 @@ static bool TryBlock(void(^block)(), NSError** error) {
              password:(NSString *)password
                 error:(NSError**)error {
   return TryBlock(^{
-    _client.reset(new cmusclient::CmusClient([hostName UTF8String],
-                                             [port UTF8String],
-                                             [password UTF8String]));
+    _client.reset(new cmusclient::CmusClient(
+        NSStringToUtf8String(hostName),
+        NSStringToUtf8String(port),
+        NSStringToUtf8String(password)));
   }, error);
 }
 
@@ -124,7 +126,7 @@ static bool TryBlock(void(^block)(), NSError** error) {
   }
 
   return TryBlock(^{
-    _client->Search([str UTF8String]);
+    _client->Search(NSStringToUtf8String(str));
   }, error);
 }
 

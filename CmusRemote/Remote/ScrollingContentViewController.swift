@@ -18,7 +18,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
           FakeVC(title: "Player", showsMiniPlayer: false),
           FakeVC(title: "Info", showsMiniPlayer: true),
           FakeVC(title: "Lyrics", showsMiniPlayer: true),
-          FilesCollectionViewController(),
+          ListViewTab(),
           FakeVC(title: "Settings", showsMiniPlayer: true),
         ]
       }
@@ -33,16 +33,14 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
 
   func registerSession(_ session: CmusRemoteSession) {
     for content in scrollingContents {
-      if let sessionRegistrar = content.viewController as? SessionRegistrar {
-        sessionRegistrar.registerSession(session)
-      }
+      content.registerSession(session)
     }
   }
 
   // MARK: - MiniPlayerViewControllerDelegate
 
   func miniPlayerDidTapTrackName(_ player: MiniPlayerViewController) {
-    let currentContent = scrollingContents[_currentContentIndex]
+    let currentContent = scrollingContents[currentContentIndex]
     if let currentContentDelegate = currentContent
         as? MiniPlayerViewControllerDelegate {
       currentContentDelegate.miniPlayerDidTapTrackName(player)
@@ -50,6 +48,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
   }
 
   // MARK: - Public
+
   var scrollView: UIScrollView {
     get {
       return view as! UIScrollView
@@ -77,6 +76,12 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
   var showsMiniPlayer: Bool {
     get {
       return scrollingContents[currentContentIndex].showsMiniPlayer
+    }
+  }
+
+  var hasExtraHeader: Bool {
+    get {
+      return scrollingContents[currentContentIndex].hasExtraHeader
     }
   }
 
@@ -130,6 +135,7 @@ class FakeVC: UIViewController, RemoteViewTab {
   }
   let tabTitle: String
   let showsMiniPlayer: Bool
+  let hasExtraHeader: Bool = false
 
   init(title: String, showsMiniPlayer: Bool) {
     self.tabTitle = title

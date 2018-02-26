@@ -12,15 +12,17 @@
 #include "../../deps/cmus-client-cpp/lib/status.h"
 #include "../../deps/cmus-client-cpp/lib/tags.h"
 
+#import "StringUtils.h"
+
 @implementation CmusTags
 @synthesize album = _album;
 @synthesize artist = _artist;
 @synthesize title = _title;
 
-- (instancetype)initWithTags:(const cmusclient::Tags)tags {
-  _album = [NSString stringWithUTF8String:tags.album.c_str()];
-  _artist = [NSString stringWithUTF8String:tags.artist.c_str()];
-  _title = [NSString stringWithUTF8String:tags.title.c_str()];
+- (instancetype)initWithTags:(const cmusclient::Tags&)tags {
+  _album = Utf8StringToNSString(tags.album);
+  _artist = Utf8StringToNSString(tags.artist);
+  _title = Utf8StringToNSString(tags.title);
   return self;
 }
 @end
@@ -33,7 +35,7 @@
 - (instancetype)initWithFilename:(const std::string&)filename
                         duration:(NSInteger)duration
                             tags:(const cmusclient::Tags&)tags {
-  _filename = [NSString stringWithUTF8String:filename.c_str()];
+  _filename = Utf8StringToNSString(filename);
   _duration = duration;
   _tags = [[CmusTags alloc] initWithTags:tags];
 
