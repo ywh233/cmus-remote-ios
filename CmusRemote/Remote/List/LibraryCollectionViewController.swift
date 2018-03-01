@@ -22,7 +22,7 @@ class LibraryCollectionViewController:
   private var _isKeyboardShowing: Bool = false
   // Exists only if in search mode.
   private var _filteredFiles: Array<CmusMetadata>?
-  private var _currentPlayingFilename: String?
+  private var _currentStatus: CmusStatus?
   private var _statusBindingHolder: EventBindingHolder?
   private weak var _session: CmusRemoteSession?
 
@@ -86,12 +86,12 @@ class LibraryCollectionViewController:
   }
 
   func scrollToCurrentFile() {
-    if _currentPlayingFilename == nil || _currentPlayingFilename!.isEmpty {
+    if _currentStatus?.filename == nil {
       return
     }
 
     let index = _filesToShow.index {
-      $0.filename == self._currentPlayingFilename
+      $0.filename == self._currentStatus!.filename
     }
     if index == nil {
       return
@@ -140,7 +140,8 @@ class LibraryCollectionViewController:
     cell.textLabel?.text = metadata.titleOrBasename
     cell.detailTextLabel?.text = metadata.artistOrUnknown
 
-    if _currentPlayingFilename == metadata.filename {
+    if _currentStatus?.status == .playing &&
+        _currentStatus?.filename == metadata.filename {
       if cell.accessoryView == nil {
         cell.accessoryView = UIImageView(image: kProminentNoteIcon)
         cell.accessoryView!.tintColor = Theme.controlProminentColor
@@ -206,12 +207,11 @@ class LibraryCollectionViewController:
   // MARK: - Private
 
   private func onStatus(_ status: CmusStatus) {
-    let currentPlayingFile = status.status == .playing ? status.filename : nil
-    if (currentPlayingFile == _currentPlayingFilename) {
+    if (!doesStatusNeedReload(status)) {
       return
     }
 
-    _currentPlayingFilename = currentPlayingFile
+    _currentStatus = status
     self.collectionView?.reloadData()
   }
 
@@ -222,5 +222,11 @@ class LibraryCollectionViewController:
     }
     _filteredFiles = nil
     self.collectionView?.reloadData()
+  }
+
+  private func doesStatusNeedReload(_ status: CmusStatus) -> Bool {
+    return (_currentStatus == nil ||
+      _currentStatus!.filename != status.filename ||
+      _currentStatus!.status != status.status)
   }
 }
