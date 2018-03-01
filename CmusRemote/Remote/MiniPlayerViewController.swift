@@ -23,6 +23,7 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
   weak var delegate: MiniPlayerViewControllerDelegate?
 
   private var _titleLabel: UILabel!
+  private var _titleTapDetectionView: UIView!
   private var _fastRewindButton: MDCFlatButton!
   private var _fastForwardButton: MDCFlatButton!
   private var _playButton: PlayButton!
@@ -38,11 +39,14 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
     Theme.addFlatShadow(toLayer: view.layer)
     view.translatesAutoresizingMaskIntoConstraints = false
 
+    _titleTapDetectionView = UIView()
+    _titleTapDetectionView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(_titleTapDetectionView)
+
     _titleLabel = UILabel()
     _titleLabel.font = MDCTypography.subheadFont()
     _titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    _titleLabel.text = "Hello World! (Accoustic)"
-    view.addSubview(_titleLabel)
+    _titleTapDetectionView.addSubview(_titleLabel)
 
     _fastRewindButton = addButton(image: #imageLiteral(resourceName: "ic_fast_rewind_36pt"))
     _fastForwardButton = addButton(image: #imageLiteral(resourceName: "ic_fast_forward_36pt"))
@@ -127,17 +131,25 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
       _playButton.leadingAnchor.constraint(
         equalTo: safeAreaGuide.leadingAnchor),
 
+      _titleTapDetectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      _titleTapDetectionView.bottomAnchor.constraint(
+        equalTo: view.bottomAnchor),
+      _titleTapDetectionView.leadingAnchor.constraint(
+        equalTo: _playButton.trailingAnchor),
+
       _titleLabel.centerYAnchor.constraint(
-        equalTo: safeAreaGuide.centerYAnchor),
+        equalTo: _titleTapDetectionView.centerYAnchor),
       _titleLabel.leadingAnchor.constraint(
-        equalTo: _playButton.trailingAnchor,
+        equalTo: _titleTapDetectionView.leadingAnchor,
         constant: kXInset),
+      _titleLabel.trailingAnchor.constraint(
+        equalTo: _titleTapDetectionView.trailingAnchor,
+        constant: -kXInset),
 
       _fastRewindButton.centerYAnchor.constraint(
         equalTo: safeAreaGuide.centerYAnchor),
       _fastRewindButton.leadingAnchor.constraint(
-        equalTo: _titleLabel.trailingAnchor,
-        constant: kXInset),
+        equalTo: _titleTapDetectionView.trailingAnchor),
 
       _fastForwardButton.centerYAnchor.constraint(
         equalTo: safeAreaGuide.centerYAnchor),
@@ -156,12 +168,12 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
     _playButton.addTarget(self, action: #selector(onPlay(button:)),
                           for: .touchUpInside)
 
-    _titleLabel.isUserInteractionEnabled = true
+    _titleTapDetectionView.isUserInteractionEnabled = true
     let titleLabelTapRecognizer = UITapGestureRecognizer(
         target: self, action: #selector(onTapTrackName(gesture:)))
     titleLabelTapRecognizer.numberOfTapsRequired = 1
     titleLabelTapRecognizer.numberOfTouchesRequired = 1
-    _titleLabel.addGestureRecognizer(titleLabelTapRecognizer)
+    _titleTapDetectionView.addGestureRecognizer(titleLabelTapRecognizer)
   }
 }
 
