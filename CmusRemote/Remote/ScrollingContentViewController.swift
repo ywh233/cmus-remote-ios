@@ -66,10 +66,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
       _currentContentIndex = val
 
       scrollingContents[_currentContentIndex].onTabSelected()
-
-      let offset = CGPoint(
-          x: CGFloat(_currentContentIndex) * scrollView.bounds.width, y: 0)
-      scrollView.setContentOffset(offset, animated: true)
+      scrollToCurrentIndex()
     }
   }
 
@@ -95,7 +92,6 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
 
     scrollView.isPagingEnabled = true
     scrollView.isScrollEnabled = false
-
 
     let contentGuide = scrollView.contentLayoutGuide
     var lastTrailingAnchor = contentGuide.leadingAnchor
@@ -123,9 +119,37 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
         .constraint(equalTo: contentGuide.trailingAnchor).isActive = true
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    NotificationCenter.default.addObserver(
+      forName: .UIDeviceOrientationDidChange, object: nil, queue: .main,
+      using: deviceDidRotate)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    NotificationCenter.default.removeObserver(self)
+  }
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+
+  // MARK: - Events
+
+  private func deviceDidRotate(notification: Notification) {
+    scrollToCurrentIndex()
+  }
+
+  // MARK: - Private
+
+  private func scrollToCurrentIndex() {
+    let offset = CGPoint(
+    x: CGFloat(_currentContentIndex) * scrollView.bounds.width, y: 0)
+    scrollView.setContentOffset(offset, animated: true)
   }
 }
 
