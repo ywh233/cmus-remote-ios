@@ -78,7 +78,7 @@ class LibraryCollectionViewController:
   }
 
   func refreshContent() {
-    _ = _session?.getList(view: .library).done { [weak self] files in
+    _ = _session?.getList(from: .library).done { [weak self] files in
       self?._files = files
       self?.exitSearchMode()
       self?.collectionView!.reloadData()
@@ -103,16 +103,22 @@ class LibraryCollectionViewController:
 
   override func collectionView(_ collectionView: UICollectionView,
                                didSelectItemAt indexPath: IndexPath) {
-    let file = _filesToShow[indexPath.item]
-    var searchString = URL(fileURLWithPath: file.filename).lastPathComponent
-    if (!file.tags.title.isEmpty) {
-      searchString += " " + file.tags.title
+    if _session == nil {
+      return
     }
-    if (!file.tags.artist.isEmpty) {
-      searchString += " " + file.tags.artist
-    }
-    _ = _session?.search(searchString).then { [weak _session] in
-      _session == nil ? Promise() : _session!.activate()
+
+    _ = _session!.goTo(view: .library).then({
+      let file = self._filesToShow[indexPath.item]
+      var searchString = URL(fileURLWithPath: file.filename).lastPathComponent
+      if (!file.tags.title.isEmpty) {
+        searchString += " " + file.tags.title
+      }
+      if (!file.tags.artist.isEmpty) {
+        searchString += " " + file.tags.artist
+      }
+      return self._session!.search(searchString)
+      } as ()->Promise<Void>).then {
+        self._session!.activate()
     }
   }
 
