@@ -68,28 +68,63 @@ static bool TryBlock(void(^block)(), NSError** error) {
   return nil;
 }
 
-- (NSArray<CmusMetadata*>*)getListForView:(CmusViewType)viewType
-                                    error:(NSError**)error {
-  cmusclient::CmusClient::View view = cmusclient::CmusClient::View::LIBRARY;
-  switch (viewType) {
-    case CmusViewTypeLibrary:
-      view = cmusclient::CmusClient::View::LIBRARY;
+- (BOOL)goToView:(CmusView)view withError:(NSError**)error {
+  cmusclient::CmusClient::View client_view =
+      cmusclient::CmusClient::View::LIBRARY;
+  switch (view) {
+    case CmusViewLibrary:
+      client_view = cmusclient::CmusClient::View::LIBRARY;
       break;
-    case CmusViewTypeFilteredLibrary:
-      view = cmusclient::CmusClient::View::FILTERED_LIBRARY;
+    case CmusViewSortedLibrary:
+      client_view = cmusclient::CmusClient::View::SORTED_LIBRARY;
       break;
-    case CmusViewTypePlaylist:
-      view = cmusclient::CmusClient::View::PLAYLIST;
+    case CmusViewPlaylist:
+      client_view = cmusclient::CmusClient::View::PLAYLIST;
       break;
-    case CmusViewTypeQueue:
-      view = cmusclient::CmusClient::View::QUEUE;
+    case CmusViewPlayQueue:
+      client_view = cmusclient::CmusClient::View::PLAY_QUEUE;
+      break;
+    case CmusViewFilters:
+      client_view = cmusclient::CmusClient::View::FILTERS;
+      break;
+    case CmusViewBrowser:
+      client_view = cmusclient::CmusClient::View::BROWSER;
+      break;
+    case CmusViewSettings:
+      client_view = cmusclient::CmusClient::View::SETTINGS;
+      break;
+    default:
+      assert(false);
+      break;
+  }
+  return TryBlock(^{
+    _client->GoToView(client_view);
+  }, error);
+}
+
+- (NSArray<CmusMetadata*>*)getListFromSource:(CmusListSource)source
+                                       error:(NSError**)error {
+  cmusclient::CmusClient::MetadataListSource client_source =
+      cmusclient::CmusClient::MetadataListSource::LIBRARY;
+  switch (source) {
+    case CmusListSourceLibrary:
+      client_source = cmusclient::CmusClient::MetadataListSource::LIBRARY;
+      break;
+    case CmusListSourceFilteredLibrary:
+      client_source = cmusclient::CmusClient::MetadataListSource::FILTERED_LIBRARY;
+      break;
+    case CmusListSourcePlaylist:
+      client_source = cmusclient::CmusClient::MetadataListSource::PLAYLIST;
+      break;
+    case CmusListSourceQueue:
+      client_source = cmusclient::CmusClient::MetadataListSource::QUEUE;
       break;
     default:
       assert(false);
   }
 
   try {
-    auto result = _client->GetList(view);
+    auto result = _client->GetMetadataList(client_source);
     return [CmusMetadata convertFromMetadataList:result];
   } catch (const std::runtime_error& err) {
     ConvertError(err, error);

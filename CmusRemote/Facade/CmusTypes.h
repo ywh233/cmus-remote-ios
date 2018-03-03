@@ -14,11 +14,21 @@ typedef NS_ENUM(NSInteger, CmusPlayerStatus) {
   CmusPlayerStatusPaused
 };
 
-typedef NS_ENUM(NSInteger, CmusViewType) {
-  CmusViewTypeLibrary,
-  CmusViewTypeFilteredLibrary,
-  CmusViewTypePlaylist,
-  CmusViewTypeQueue,
+typedef NS_ENUM(NSInteger, CmusView) {
+  CmusViewLibrary,
+  CmusViewSortedLibrary,
+  CmusViewPlaylist,
+  CmusViewPlayQueue,
+  CmusViewBrowser,
+  CmusViewFilters,
+  CmusViewSettings,
+};
+
+typedef NS_ENUM(NSInteger, CmusListSource) {
+  CmusListSourceLibrary,
+  CmusListSourceFilteredLibrary,
+  CmusListSourcePlaylist,
+  CmusListSourceQueue,
 };
 
 @interface CmusTags : NSObject

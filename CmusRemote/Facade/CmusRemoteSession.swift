@@ -55,9 +55,9 @@ class CmusRemoteSession {
     }
   }
 
-  func getList(view: CmusViewType) -> Promise<Array<CmusMetadata>> {
+  func getList(view: CmusListSource) -> Promise<Array<CmusMetadata>> {
     return Promise().map(on: _sessionQueue) {
-      return try self._core.getListFor(view)
+      return try self._core.getListFrom(.library)
     }
   }
 

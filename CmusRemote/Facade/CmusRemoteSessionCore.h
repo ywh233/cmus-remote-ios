@@ -19,8 +19,10 @@
 
 - (CmusStatus*)getStatusWithError:(NSError**)error;
 
-- (NSArray<CmusMetadata*>*)getListForView:(CmusViewType)viewType
-                                    error:(NSError**)error;
+- (BOOL)goToView:(CmusView)view withError:(NSError**)error;
+
+- (NSArray<CmusMetadata*>*)getListFromSource:(CmusListSource)source
+                                       error:(NSError**)error;
 
 - (BOOL)playWithError:(NSError**)error;
 - (BOOL)pauseWithError:(NSError**)error;
