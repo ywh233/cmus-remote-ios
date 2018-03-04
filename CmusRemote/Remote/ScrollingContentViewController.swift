@@ -15,7 +15,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
     get {
       if _scrollingContents == nil {
         _scrollingContents = [
-          FakeVC(title: "Player", showsMiniPlayer: false),
+          PlayerViewTab(),
           FakeVC(title: "Info", showsMiniPlayer: true),
           FakeVC(title: "Lyrics", showsMiniPlayer: true),
           ListViewTab(),
@@ -76,9 +76,9 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
     }
   }
 
-  var hasExtraHeader: Bool {
+  var showsHeaderShadow: Bool {
     get {
-      return scrollingContents[currentContentIndex].hasExtraHeader
+      return scrollingContents[currentContentIndex].showsHeaderShadow
     }
   }
 
@@ -159,7 +159,7 @@ class FakeVC: UIViewController, RemoteViewTab {
   }
   let tabTitle: String
   let showsMiniPlayer: Bool
-  let hasExtraHeader: Bool = false
+  let showsHeaderShadow: Bool = true
 
   init(title: String, showsMiniPlayer: Bool) {
     self.tabTitle = title

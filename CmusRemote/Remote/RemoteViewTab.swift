@@ -12,7 +12,7 @@ protocol RemoteViewTab: SessionRegistrar {
   var viewController: UIViewController { get }
   var tabTitle: String { get }
   var showsMiniPlayer: Bool { get }
-  var hasExtraHeader: Bool { get }
+  var showsHeaderShadow: Bool { get }
 
   func onTabSelected()
 }

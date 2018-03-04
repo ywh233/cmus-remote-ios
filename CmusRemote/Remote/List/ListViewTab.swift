@@ -14,7 +14,7 @@ class ListViewTab: NSObject, RemoteViewTab, MiniPlayerViewControllerDelegate {
 
   let tabTitle: String = "List"
   let showsMiniPlayer: Bool = true
-  let hasExtraHeader: Bool = true
+  let showsHeaderShadow: Bool = false
   var viewController: UIViewController {
     get { return _navController }
   }

@@ -127,7 +127,7 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
   // MARK: - Private
 
   private func updateViewState(animated: Bool) {
-    setTabBarShadowVisible(!_scrollingContentVC.hasExtraHeader,
+    setTabBarShadowVisible(_scrollingContentVC.showsHeaderShadow,
                            animated: animated)
     setMiniPlayerVisible(_scrollingContentVC.showsMiniPlayer,
                          animated: animated)
