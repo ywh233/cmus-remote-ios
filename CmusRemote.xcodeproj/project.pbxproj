@@ -21,6 +21,7 @@
 		E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */; };
 		E860E66220414413008DEB47 /* EventTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860E66120414413008DEB47 /* EventTarget.swift */; };
 		E87DC17D204CAB2700BFE1CA /* ProgressButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */; };
+		E87DC17F204D138700BFE1CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DC17E204D138700BFE1CA /* Math.swift */; };
 		E88229A8204B91ED00604620 /* PlayerViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229A7204B91ED00604620 /* PlayerViewTab.swift */; };
 		E88229AA204B938300604620 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229A9204B938300604620 /* PlayerViewController.swift */; };
 		E88229AD204BA93400604620 /* PlayButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229AC204BA93400604620 /* PlayButtonController.swift */; };
@@ -60,6 +61,7 @@
 		E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		E860E66120414413008DEB47 /* EventTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTarget.swift; sourceTree = "<group>"; };
 		E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButtonController.swift; sourceTree = "<group>"; };
+		E87DC17E204D138700BFE1CA /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		E88229A7204B91ED00604620 /* PlayerViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewTab.swift; sourceTree = "<group>"; };
 		E88229A9204B938300604620 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		E88229AC204BA93400604620 /* PlayButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				E88229AC204BA93400604620 /* PlayButtonController.swift */,
 				E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */,
+				E87DC17E204D138700BFE1CA /* Math.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8294BFA2046AA8E006A1008 /* StringUtils.mm in Sources */,
+				E87DC17F204D138700BFE1CA /* Math.swift in Sources */,
 				E88229A8204B91ED00604620 /* PlayerViewTab.swift in Sources */,
 				E88229B1204BCE5A00604620 /* TrackImageView.swift in Sources */,
 				E8A9F4742043467300CA3EDC /* LibraryCollectionViewController.swift in Sources */,

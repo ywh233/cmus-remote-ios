@@ -34,6 +34,9 @@ class PlayerViewController: UIViewController, SessionRegistrar {
   private var _previousButtonController: ProgressButtonController!
   private var _nextButtonController: ProgressButtonController!
 
+  // Used to throttle calls to get log volume.
+  private var _currentRawVolume = -1 as Double
+
   private weak var _session: CmusRemoteSession!
   private var _statusHolder: EventBindingHolder?
   private var _isStatusUpdateEnabled = true
@@ -91,8 +94,6 @@ class PlayerViewController: UIViewController, SessionRegistrar {
                                session: _session!)
 
     let volumeMuteView = createVolumeView(image: #imageLiteral(resourceName: "ic_volume_mute_18pt"))
-
-
     let volumeUpView = createVolumeView(image: #imageLiteral(resourceName: "ic_volume_up_18pt"))
 
     _volumeSlider = MDCSlider()
@@ -135,8 +136,9 @@ class PlayerViewController: UIViewController, SessionRegistrar {
   }
 
   @objc private func onVolumeChanged() {
+    let rawVol = logVolumeToRaw(Double(_volumeSlider.value))
     _ = _session
-        .setVolume(command: String(format: "%d", UInt(_volumeSlider.value)))
+        .setVolume(command: String(format: "%d%", UInt(rawVol)))
   }
 
   // MARK: - Private
@@ -158,7 +160,12 @@ class PlayerViewController: UIViewController, SessionRegistrar {
       _artistLabel.text = status.artistOrUnknown
     }
     _playButtonController.playing = (status.status == .playing)
-    _volumeSlider.value = CGFloat(status.leftVolume + status.rightVolume) / 2
+    // TODO: Allow toggling log transformation on settings view.
+    let rawVol = Double(status.leftVolume + status.rightVolume) / 2
+    if rawVol != _currentRawVolume {
+      _volumeSlider.value = CGFloat(rawVolumeToLog(rawVol))
+      _currentRawVolume = rawVol
+    }
   }
 
   private func createProgressLabel() -> UILabel {
