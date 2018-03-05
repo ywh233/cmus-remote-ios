@@ -74,9 +74,7 @@ class SearchHeaderView: UIView {
       _cancelButton.trailingAnchor.constraint(
         equalTo: self.trailingAnchor, constant: -kButtonMarginRight),
     ])
-    _cancelButton.setContentHuggingPriority(.required, for: .horizontal)
-    _cancelButton.setContentCompressionResistancePriority(.defaultLow,
-                                                          for: .horizontal)
+    forceIntrinsicSize(_cancelButton, for: .horizontal)
   }
 
   deinit {

@@ -26,7 +26,11 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
   private var _titleTapDetectionView: UIView!
   private var _fastRewindButton: MDCFlatButton!
   private var _fastForwardButton: MDCFlatButton!
-  private var _playButton: PlayButton!
+  private var _playButton: MDCFlatButton!
+
+  private var _playButtonController: PlayButtonController!
+  private var _fastRewindButtonController: ProgressButtonController!
+  private var _fastForwardButtonController: ProgressButtonController!
 
   private var _statusListenerHolder: EventBindingHolder?
 
@@ -48,11 +52,21 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
     _titleLabel.translatesAutoresizingMaskIntoConstraints = false
     _titleTapDetectionView.addSubview(_titleLabel)
 
-    _fastRewindButton = addButton(image: #imageLiteral(resourceName: "ic_fast_rewind_36pt"))
-    _fastForwardButton = addButton(image: #imageLiteral(resourceName: "ic_fast_forward_36pt"))
+    _fastRewindButton = addButton(image: #imageLiteral(resourceName: "ic_fast_rewind_48pt"))
+    _fastForwardButton = addButton(image: #imageLiteral(resourceName: "ic_fast_forward_48pt"))
 
-    _playButton = PlayButton()
+    _fastRewindButtonController =
+      ProgressButtonController(button: _fastRewindButton, direction: .rewind,
+                               session: _session!)
+
+    _fastForwardButtonController =
+      ProgressButtonController(button: _fastForwardButton, direction: .forward,
+                               session: _session!)
+
+    _playButton = MDCFlatButton()
     setupButton(_playButton)
+    _playButtonController = PlayButtonController(button: _playButton,
+                                                 session: _session!)
 
     layoutViews()
     setupEvents()
@@ -72,7 +86,7 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
 
   func updateStatus(_ status: CmusStatus) {
     _titleLabel.text = status.titleOrBasename
-    _playButton.playing = (status.status == .playing)
+    _playButtonController.playing = (status.status == .playing)
   }
 
   // MARK: - Events
@@ -81,22 +95,6 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
     if gesture.state == .ended {
       delegate?.miniPlayerDidTapTrackName(self)
     }
-  }
-
-  @objc private func onPlay(button: PlayButton) {
-    if button.playing {
-      _ = _session?.pause()
-    } else {
-      _ = _session?.play()
-    }
-  }
-
-  @objc private func onPrevious(button: UIButton) {
-    _ = _session?.previous()
-  }
-
-  @objc private func onNext(button: UIButton) {
-    _ = _session?.next()
   }
 
   // MARK: - Private
@@ -110,15 +108,15 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
 
   private func setupButton(_ button: UIButton) {
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.sizeToFit()
     button.contentEdgeInsets = kButtonContentInsets
-    button.setContentCompressionResistancePriority(
-      .defaultLow, for: .horizontal)
-    button.setContentHuggingPriority(.required, for: .horizontal)
+    button.imageView?.contentMode = .scaleAspectFit
+    forceIntrinsicSize(button, for: .horizontal)
     view.addSubview(button)
-    button.heightAnchor.constraint(equalToConstant: kIntrinsicHeight)
-      .isActive = true
-    button.widthAnchor.constraint(equalToConstant: kButtonWidth).isActive = true
+
+    NSLayoutConstraint.activate([
+      button.heightAnchor.constraint(equalToConstant: kIntrinsicHeight),
+      button.widthAnchor.constraint(equalToConstant: kButtonWidth),
+    ])
   }
 
   private func layoutViews() {
@@ -161,50 +159,11 @@ class MiniPlayerViewController: UIViewController, SessionRegistrar {
   }
 
   private func setupEvents() {
-    _fastRewindButton.addTarget(self, action: #selector(onPrevious(button:)),
-                                for: .touchUpInside)
-    _fastForwardButton.addTarget(self, action: #selector(onNext(button:)),
-                                 for: .touchUpInside)
-    _playButton.addTarget(self, action: #selector(onPlay(button:)),
-                          for: .touchUpInside)
-
     _titleTapDetectionView.isUserInteractionEnabled = true
     let titleLabelTapRecognizer = UITapGestureRecognizer(
         target: self, action: #selector(onTapTrackName(gesture:)))
     titleLabelTapRecognizer.numberOfTapsRequired = 1
     titleLabelTapRecognizer.numberOfTouchesRequired = 1
     _titleTapDetectionView.addGestureRecognizer(titleLabelTapRecognizer)
-  }
-}
-
-private class PlayButton : MDCFlatButton {
-  private var _playing = false
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    updateButtonState()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    updateButtonState()
-  }
-
-  var playing: Bool {
-    get {
-      return _playing
-    }
-    set (val) {
-      if val == _playing {
-        return
-      }
-      _playing = val
-      updateButtonState()
-    }
-  }
-
-  private func updateButtonState() {
-    let image = _playing ? #imageLiteral(resourceName: "ic_pause_36pt") : #imageLiteral(resourceName: "ic_play_arrow_36pt")
-    self.setImage(image, for: .normal)
   }
 }

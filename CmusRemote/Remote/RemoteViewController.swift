@@ -91,6 +91,7 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
       ])
 
     _miniPlayer = MiniPlayerViewController()
+    _miniPlayer.registerSession(_session)
     _miniPlayer.delegate = _scrollingContentVC
     addChildViewController(_miniPlayer)
     self.view.addSubview(_miniPlayer.view)
@@ -108,7 +109,6 @@ class RemoteViewController: UIViewController, MDCTabBarDelegate {
     playerBottomConstraint.priority = .defaultLow
     playerBottomConstraint.isActive = true
     _miniPlayer.didMove(toParentViewController: self)
-    _miniPlayer.registerSession(_session)
 
     updateViewState(animated: false)
   }

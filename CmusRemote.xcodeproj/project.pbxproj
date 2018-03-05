@@ -20,8 +20,12 @@
 		E84D1195203C009A00E3C5E7 /* CmusRemoteSessionCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = E84D1194203C009A00E3C5E7 /* CmusRemoteSessionCore.mm */; };
 		E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */; };
 		E860E66220414413008DEB47 /* EventTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860E66120414413008DEB47 /* EventTarget.swift */; };
+		E87DC17D204CAB2700BFE1CA /* ProgressButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */; };
 		E88229A8204B91ED00604620 /* PlayerViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229A7204B91ED00604620 /* PlayerViewTab.swift */; };
 		E88229AA204B938300604620 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229A9204B938300604620 /* PlayerViewController.swift */; };
+		E88229AD204BA93400604620 /* PlayButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229AC204BA93400604620 /* PlayButtonController.swift */; };
+		E88229AF204BC84A00604620 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229AE204BC84A00604620 /* ViewUtils.swift */; };
+		E88229B1204BCE5A00604620 /* TrackImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229B0204BCE5A00604620 /* TrackImageView.swift */; };
 		E89A5B07203D5CD10032D09A /* CmusRemoteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89A5B06203D5CD10032D09A /* CmusRemoteSession.swift */; };
 		E89CC8032042114F004C42B9 /* SessionErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CC8022042114F004C42B9 /* SessionErrorHandler.swift */; };
 		E89CC80A20423D7C004C42B9 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89CC80920423D7C004C42B9 /* ScrollingContentViewController.swift */; };
@@ -55,8 +59,12 @@
 		E84D1194203C009A00E3C5E7 /* CmusRemoteSessionCore.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CmusRemoteSessionCore.mm; sourceTree = "<group>"; };
 		E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		E860E66120414413008DEB47 /* EventTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTarget.swift; sourceTree = "<group>"; };
+		E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButtonController.swift; sourceTree = "<group>"; };
 		E88229A7204B91ED00604620 /* PlayerViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewTab.swift; sourceTree = "<group>"; };
 		E88229A9204B938300604620 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		E88229AC204BA93400604620 /* PlayButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonController.swift; sourceTree = "<group>"; };
+		E88229AE204BC84A00604620 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		E88229B0204BCE5A00604620 /* TrackImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImageView.swift; sourceTree = "<group>"; };
 		E89A5B02203D4AEC0032D09A /* libcmusclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcmusclient.a; path = "build/iPhoneOS/deps/cmus-client-cpp/lib/Release-iphoneos/libcmusclient.a"; sourceTree = "<group>"; };
 		E89A5B04203D4AFC0032D09A /* libcmusclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcmusclient.a; path = "build/iPhoneSimulator/deps/cmus-client-cpp/lib/Release-iphonesimulator/libcmusclient.a"; sourceTree = "<group>"; };
 		E89A5B06203D5CD10032D09A /* CmusRemoteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CmusRemoteSession.swift; sourceTree = "<group>"; };
@@ -159,8 +167,18 @@
 			children = (
 				E88229A7204B91ED00604620 /* PlayerViewTab.swift */,
 				E88229A9204B938300604620 /* PlayerViewController.swift */,
+				E88229B0204BCE5A00604620 /* TrackImageView.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		E88229AB204BA91200604620 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E88229AC204BA93400604620 /* PlayButtonController.swift */,
+				E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		E89CC80420422B25004C42B9 /* Base */ = {
@@ -171,6 +189,7 @@
 				E84D118C203BBF2200E3C5E7 /* Theme.swift */,
 				E8F87DA9203EBC5F0076C243 /* Persistence.swift */,
 				E8A9F47520434C2300CA3EDC /* SessionRegistrar.swift */,
+				E88229AE204BC84A00604620 /* ViewUtils.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -178,6 +197,7 @@
 		E89CC80520422B74004C42B9 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				E88229AB204BA91200604620 /* Base */,
 				E88229A6204B90EC00604620 /* Player */,
 				E8A9F47020433E2900CA3EDC /* List */,
 				E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */,
@@ -351,12 +371,16 @@
 			files = (
 				E8294BFA2046AA8E006A1008 /* StringUtils.mm in Sources */,
 				E88229A8204B91ED00604620 /* PlayerViewTab.swift in Sources */,
+				E88229B1204BCE5A00604620 /* TrackImageView.swift in Sources */,
 				E8A9F4742043467300CA3EDC /* LibraryCollectionViewController.swift in Sources */,
+				E88229AF204BC84A00604620 /* ViewUtils.swift in Sources */,
 				E84D118D203BBF2200E3C5E7 /* Theme.swift in Sources */,
 				E8F87DAA203EBC5F0076C243 /* Persistence.swift in Sources */,
+				E88229AD204BA93400604620 /* PlayButtonController.swift in Sources */,
 				E8AC7C46203FF39500A3E34A /* MiniPlayerViewController.swift in Sources */,
 				E81205162043ECC7003C1550 /* NavigationBarContainerViewController.swift in Sources */,
 				E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */,
+				E87DC17D204CAB2700BFE1CA /* ProgressButtonController.swift in Sources */,
 				E89A5B07203D5CD10032D09A /* CmusRemoteSession.swift in Sources */,
 				E860E66220414413008DEB47 /* EventTarget.swift in Sources */,
 				E81205182043F0B7003C1550 /* ListViewTab.swift in Sources */,

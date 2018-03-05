@@ -171,4 +171,16 @@ static bool TryBlock(void(^block)(), NSError** error) {
   }, error);
 }
 
+- (BOOL)seek:(NSString*)command error:(NSError**)error {
+  return TryBlock(^{
+    _client->Seek(NSStringToUtf8String(command));
+  }, error);
+}
+
+- (BOOL)setVolume:(NSString*)command error:(NSError**)error {
+  return TryBlock(^{
+    _client->SetVolume(NSStringToUtf8String(command));
+  }, error);
+}
+
 @end

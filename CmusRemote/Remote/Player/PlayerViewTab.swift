@@ -12,10 +12,14 @@ class PlayerViewTab: NSObject, RemoteViewTab {
   let tabTitle: String = "Player"
   let showsMiniPlayer: Bool = false
   let showsHeaderShadow: Bool = false
-  let viewController: UIViewController
+  var viewController: UIViewController {
+    get { return _playerViewController }
+  }
+
+  let _playerViewController: PlayerViewController
 
   override init() {
-    viewController = UIViewController()
+    _playerViewController = PlayerViewController()
   }
 
   // MARK: - RemoteViewTab
@@ -25,6 +29,6 @@ class PlayerViewTab: NSObject, RemoteViewTab {
   }
 
   func registerSession(_ session: CmusRemoteSession) {
-
+    _playerViewController.registerSession(session)
   }
 }

@@ -28,9 +28,9 @@
 - (BOOL)pauseWithError:(NSError**)error;
 - (BOOL)previousWithError:(NSError**)error;
 - (BOOL)nextWithError:(NSError**)error;
-
 - (BOOL)search:(NSString*)str error:(NSError**)error;
-
 - (BOOL)activateWithError:(NSError**)error;
+- (BOOL)seek:(NSString*)command error:(NSError**)error;
+- (BOOL)setVolume:(NSString*)command error:(NSError**)error;
 
 @end

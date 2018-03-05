@@ -38,17 +38,23 @@ typedef NS_ENUM(NSInteger, CmusListSource) {
 @end
 
 @interface CmusBasicMetadata: NSObject
-@property (nonatomic, readonly)  NSString* _Nonnull filename;
-@property (nonatomic, readonly) NSInteger duration;
-@property (nonatomic, readonly)  CmusTags* _Nonnull tags;
+@property (nonatomic, readonly) NSString* _Nonnull filename;
+@property (nonatomic, readonly) NSUInteger duration;
+@property (nonatomic, readonly) CmusTags* _Nonnull tags;
 
-@property (nonatomic, readonly)  NSString* _Nonnull titleOrBasename;
-@property (nonatomic, readonly)  NSString* _Nonnull artistOrUnknown;
+@property (nonatomic, readonly) NSString* _Nonnull titleOrBasename;
+@property (nonatomic, readonly) NSString* _Nonnull artistOrUnknown;
 @end
 
 @interface CmusStatus : CmusBasicMetadata
 @property (nonatomic, readonly) enum CmusPlayerStatus status;
-@property (nonatomic, readonly) NSInteger position;
+@property (nonatomic, readonly) NSUInteger position;
+@property (nonatomic, readonly) NSUInteger leftVolume;
+@property (nonatomic, readonly) NSUInteger rightVolume;
+@property (nonatomic, readonly)
+NSDictionary<NSString*, NSString*>* _Nonnull settings;
+
+@property (nonatomic, class, readonly) NSUInteger maxVolume;
 @end
 
 @interface CmusMetadata: CmusBasicMetadata

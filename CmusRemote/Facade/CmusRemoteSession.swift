@@ -79,6 +79,18 @@ class CmusRemoteSession {
     }
   }
 
+  func seek(command: String) -> Promise<Void> {
+    return runOnSessionQueue {
+      try self._core.seek(command)
+    }
+  }
+
+  func setVolume(command: String) -> Promise<Void> {
+    return runOnSessionQueue {
+      try self._core.setVolume(command)
+    }
+  }
+
   // MARK: - Private
 
   private func startPollingTimer() {

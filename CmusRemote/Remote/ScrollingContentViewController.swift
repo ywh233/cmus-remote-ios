@@ -15,10 +15,10 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
     get {
       if _scrollingContents == nil {
         _scrollingContents = [
+          ListViewTab(),
           PlayerViewTab(),
           FakeVC(title: "Info", showsMiniPlayer: true),
           FakeVC(title: "Lyrics", showsMiniPlayer: true),
-          ListViewTab(),
           FakeVC(title: "Settings", showsMiniPlayer: true),
         ]
       }
@@ -125,6 +125,8 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
     NotificationCenter.default.addObserver(
       forName: .UIDeviceOrientationDidChange, object: nil, queue: .main,
       using: deviceDidRotate)
+
+    scrollingContents[currentContentIndex].onTabSelected()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -148,7 +150,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
 
   private func scrollToCurrentIndex() {
     let offset = CGPoint(
-    x: CGFloat(_currentContentIndex) * scrollView.bounds.width, y: 0)
+    x: CGFloat(currentContentIndex) * scrollView.bounds.width, y: 0)
     scrollView.setContentOffset(offset, animated: true)
   }
 }

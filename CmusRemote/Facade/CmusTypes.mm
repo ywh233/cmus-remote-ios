@@ -61,6 +61,9 @@
 @implementation CmusStatus
 @synthesize status = _status;
 @synthesize position = _position;
+@synthesize leftVolume = _leftVolume;
+@synthesize rightVolume = _rightVolume;
+@synthesize settings = _settings;
 
 - (instancetype)initWithStatus:(const cmusclient::Status&)status {
   self = [super initWithFilename:status.filename
@@ -80,7 +83,22 @@
   }
   _position = status.position;
 
+  _leftVolume = status.GetLeftVolume();
+  _rightVolume = status.GetRightVolume();
+
+  // Settings.
+  NSMutableDictionary* mutableSettings =
+      [[NSMutableDictionary alloc] initWithCapacity:status.settings.size()];
+  for (const auto& pair : status.settings) {
+    [mutableSettings setObject:Utf8StringToNSString(pair.second)
+                        forKey:Utf8StringToNSString(pair.first)];
+  }
+  _settings = mutableSettings;
   return self;
+}
+
++ (NSUInteger)maxVolume {
+  return cmusclient::Status::kMaxVolume;
 }
 
 @end
