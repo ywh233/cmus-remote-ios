@@ -8,9 +8,9 @@
 
 import UIKit
 
-let kIntrinsicSize = CGSize(width: 350, height: 350)
-let kMusicNoteImage = #imageLiteral(resourceName: "music_note_512").withRenderingMode(.alwaysTemplate)
-let kMusicNoteSize = CGSize(width: 256, height: 256)
+private let kIntrinsicSize = CGSize(width: 350, height: 350)
+private let kMusicNoteImage = #imageLiteral(resourceName: "music_note_512").withRenderingMode(.alwaysTemplate)
+private let kMusicNoteSize = CGSize(width: 256, height: 256)
 
 class TrackImageView: UIView {
   private let _musicNoteImageView: UIImageView

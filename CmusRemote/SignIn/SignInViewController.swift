@@ -10,6 +10,7 @@ import UIKit
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialTextFields
 
+private let kIconSize = CGSize(width: 256, height: 256)
 private let kInputAreaWidth: CGFloat = 400
 private let kIconInputMargin: CGFloat = 25
 private let kInputXMargin: CGFloat = 25
@@ -38,8 +39,9 @@ class SignInViewController: UIViewController {
     
     view.backgroundColor = Theme.controlBackgroundColor
 
-    let playIconView = UIImageView(image: #imageLiteral(resourceName: "large_play_icon"))
+    let playIconView = UIImageView(image: #imageLiteral(resourceName: "music_note_512").withRenderingMode(.alwaysTemplate))
     playIconView.translatesAutoresizingMaskIntoConstraints = false
+    playIconView.tintColor = Theme.controlProminentColor
     view.addSubview(playIconView)
 
     _hostNameInput = createTextInput(
@@ -81,6 +83,8 @@ class SignInViewController: UIViewController {
       playIconView.topAnchor.constraint(equalTo: _layoutGuide.topAnchor),
       playIconView.centerXAnchor.constraint(
           equalTo: _layoutGuide.centerXAnchor),
+      playIconView.widthAnchor.constraint(equalToConstant: kIconSize.width),
+      playIconView.heightAnchor.constraint(equalToConstant: kIconSize.height),
 
       _hostNameInput.topAnchor.constraint(
           equalTo: playIconView.bottomAnchor, constant: kIconInputMargin),
