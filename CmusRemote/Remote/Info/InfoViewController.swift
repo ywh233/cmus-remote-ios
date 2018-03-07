@@ -88,8 +88,11 @@ class InfoViewController: MDCCollectionViewController, SessionRegistrar {
     _infoPairs = []
     addPairIfNotEmpty(key: "File", value: status.filename,
                       array: &_infoPairs!)
-    addPairIfNotEmpty(key: "Duration", value: String(status.duration),
-                      array: &_infoPairs!)
+    if status.duration > 0 {
+      addPairIfNotEmpty(key: "Duration",
+                        value: secondsToString(status.duration),
+                        array: &_infoPairs!)
+    }
     addPairIfNotEmpty(key: "Title", value: status.tags.title,
                       array: &_infoPairs!)
     addPairIfNotEmpty(key: "Artist", value: status.tags.artist,

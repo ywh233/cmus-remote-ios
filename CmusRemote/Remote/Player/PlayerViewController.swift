@@ -309,12 +309,6 @@ class PlayerViewController: UIViewController, SessionRegistrar {
   }
 }
 
-private func secondsToString(_ seconds: UInt) -> String {
-  let minutes = seconds / 60
-  let seconds_remainder = seconds % 60
-  return String(format: "%02u:%02u", minutes, seconds_remainder)
-}
-
 private func addTouchUpTarget(_ target: Any?,
                               action: Selector,
                               for control: UIControl) {
