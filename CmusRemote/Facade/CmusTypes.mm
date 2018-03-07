@@ -17,12 +17,20 @@
 @implementation CmusTags
 @synthesize album = _album;
 @synthesize artist = _artist;
+@synthesize comment = _comment;
+@synthesize date = _date;
+@synthesize genre = _genre;
 @synthesize title = _title;
+@synthesize tracknumber = _tracknumber;
 
 - (instancetype)initWithTags:(const cmusclient::Tags&)tags {
   _album = Utf8StringToNSString(tags.album);
   _artist = Utf8StringToNSString(tags.artist);
+  _comment = Utf8StringToNSString(tags.comment);
+  _date = Utf8StringToNSString(tags.date);
+  _genre = Utf8StringToNSString(tags.genre);
   _title = Utf8StringToNSString(tags.title);
+  _tracknumber = Utf8StringToNSString(tags.tracknumber);
   return self;
 }
 @end

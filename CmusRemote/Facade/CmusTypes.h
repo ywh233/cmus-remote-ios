@@ -34,7 +34,11 @@ typedef NS_ENUM(NSInteger, CmusListSource) {
 @interface CmusTags : NSObject
 @property (nonatomic, readonly) NSString* _Nonnull album;
 @property (nonatomic, readonly) NSString* _Nonnull artist;
+@property (nonatomic, readonly) NSString* _Nonnull comment;
+@property (nonatomic, readonly) NSString* _Nonnull date;
+@property (nonatomic, readonly) NSString* _Nonnull genre;
 @property (nonatomic, readonly) NSString* _Nonnull title;
+@property (nonatomic, readonly) NSString* _Nonnull tracknumber;
 @end
 
 @interface CmusBasicMetadata: NSObject

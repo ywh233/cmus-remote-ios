@@ -11,12 +11,12 @@ import MaterialComponents.MDCButton
 import MaterialComponents.MDCSlider
 import MaterialComponents.MDCTypography
 
-let kContentInset: CGFloat = 24
-let kProgressLabelInset: CGFloat = 8
-let kButtonTopPadding: CGFloat = 16
-let kButtonSize: CGSize = CGSize(width: 90, height: 60)
-let kVolumeTopPadding: CGFloat = 16
-let kVolumeSliderInset: CGFloat = 8
+private let kContentInset: CGFloat = 24
+private let kProgressLabelInset: CGFloat = 8
+private let kButtonTopPadding: CGFloat = 16
+private let kButtonSize: CGSize = CGSize(width: 90, height: 60)
+private let kVolumeTopPadding: CGFloat = 16
+private let kVolumeSliderInset: CGFloat = 8
 
 class PlayerViewController: UIViewController, SessionRegistrar {
   private var _trackImageView: TrackImageView!

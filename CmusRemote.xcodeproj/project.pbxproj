@@ -20,6 +20,8 @@
 		E84D1195203C009A00E3C5E7 /* CmusRemoteSessionCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = E84D1194203C009A00E3C5E7 /* CmusRemoteSessionCore.mm */; };
 		E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */; };
 		E860E66220414413008DEB47 /* EventTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E860E66120414413008DEB47 /* EventTarget.swift */; };
+		E87D8FD6204FBB62002ABA54 /* InfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87D8FD5204FBB62002ABA54 /* InfoTab.swift */; };
+		E87D8FD8204FBBD0002ABA54 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87D8FD7204FBBD0002ABA54 /* InfoViewController.swift */; };
 		E87DC17D204CAB2700BFE1CA /* ProgressButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */; };
 		E87DC17F204D138700BFE1CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DC17E204D138700BFE1CA /* Math.swift */; };
 		E88229A8204B91ED00604620 /* PlayerViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88229A7204B91ED00604620 /* PlayerViewTab.swift */; };
@@ -60,6 +62,8 @@
 		E84D1194203C009A00E3C5E7 /* CmusRemoteSessionCore.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CmusRemoteSessionCore.mm; sourceTree = "<group>"; };
 		E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		E860E66120414413008DEB47 /* EventTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTarget.swift; sourceTree = "<group>"; };
+		E87D8FD5204FBB62002ABA54 /* InfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTab.swift; sourceTree = "<group>"; };
+		E87D8FD7204FBBD0002ABA54 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E87DC17C204CAB2700BFE1CA /* ProgressButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButtonController.swift; sourceTree = "<group>"; };
 		E87DC17E204D138700BFE1CA /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		E88229A7204B91ED00604620 /* PlayerViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewTab.swift; sourceTree = "<group>"; };
@@ -164,6 +168,15 @@
 			path = Facade;
 			sourceTree = "<group>";
 		};
+		E87D8FD4204FBB35002ABA54 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				E87D8FD5204FBB62002ABA54 /* InfoTab.swift */,
+				E87D8FD7204FBBD0002ABA54 /* InfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		E88229A6204B90EC00604620 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +216,7 @@
 				E88229AB204BA91200604620 /* Base */,
 				E88229A6204B90EC00604620 /* Player */,
 				E8A9F47020433E2900CA3EDC /* List */,
+				E87D8FD4204FBB35002ABA54 /* Info */,
 				E84D1199203C06AF00E3C5E7 /* RemoteViewController.swift */,
 				E8AC7C45203FF39500A3E34A /* MiniPlayerViewController.swift */,
 				E89CC80920423D7C004C42B9 /* ScrollingContentViewController.swift */,
@@ -382,8 +396,10 @@
 				E8F87DAA203EBC5F0076C243 /* Persistence.swift in Sources */,
 				E88229AD204BA93400604620 /* PlayButtonController.swift in Sources */,
 				E8AC7C46203FF39500A3E34A /* MiniPlayerViewController.swift in Sources */,
+				E87D8FD8204FBBD0002ABA54 /* InfoViewController.swift in Sources */,
 				E81205162043ECC7003C1550 /* NavigationBarContainerViewController.swift in Sources */,
 				E84D119A203C06AF00E3C5E7 /* RemoteViewController.swift in Sources */,
+				E87D8FD6204FBB62002ABA54 /* InfoTab.swift in Sources */,
 				E87DC17D204CAB2700BFE1CA /* ProgressButtonController.swift in Sources */,
 				E89A5B07203D5CD10032D09A /* CmusRemoteSession.swift in Sources */,
 				E860E66220414413008DEB47 /* EventTarget.swift in Sources */,

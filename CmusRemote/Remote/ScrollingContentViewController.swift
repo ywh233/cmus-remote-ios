@@ -17,7 +17,7 @@ UIViewController, SessionRegistrar, MiniPlayerViewControllerDelegate {
         _scrollingContents = [
           ListViewTab(),
           PlayerViewTab(),
-          FakeVC(title: "Info", showsMiniPlayer: true),
+          InfoTab(),
           FakeVC(title: "Lyrics", showsMiniPlayer: true),
           FakeVC(title: "Settings", showsMiniPlayer: true),
         ]

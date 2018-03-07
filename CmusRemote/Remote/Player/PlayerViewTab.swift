@@ -16,11 +16,7 @@ class PlayerViewTab: NSObject, RemoteViewTab {
     get { return _playerViewController }
   }
 
-  let _playerViewController: PlayerViewController
-
-  override init() {
-    _playerViewController = PlayerViewController()
-  }
+  let _playerViewController = PlayerViewController()
 
   // MARK: - RemoteViewTab
 
